@@ -2,7 +2,7 @@
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "ahmet3899";
+	$password = "";
 	$dbname = "webapp";
 	
 	$adminname = $_POST["kul_ad"];
