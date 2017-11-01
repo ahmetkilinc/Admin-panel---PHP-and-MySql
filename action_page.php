@@ -1,13 +1,17 @@
 <?php
 
+	session_start();
+
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "ahmet3899";
 	$dbname = "webapp";
 	
 	$adminname = $_POST["kul_ad"];
 	$adminpass = $_POST["kul_sif"];
 	$tamam = 0;
+
+	$url = 'http://localhost/tutorialsPoint/adminPanel/main_page.php';
 
 	$dateOnlyY = date("Y");
 
@@ -42,6 +46,9 @@
 	if($tamam == 1){
 		
 		echo "Giris Başarılı.";
+		$_SESSION["adminkullanici"] = $adminname;
+		
+		header("Location: $url");
 	}
 
 	else{
