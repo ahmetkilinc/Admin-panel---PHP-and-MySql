@@ -29,7 +29,7 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "ahmet3899";
+	$password = "";
 	$dbname = "webapp";
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
