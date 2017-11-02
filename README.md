@@ -1,4 +1,4 @@
-# Admin-panel-signin---PHP-and-MySql
+# Admin-panel---PHP-and-MySql
 An Admin-Panel-Page for a Web Application. 
 
 Developed with Php and MySql.
