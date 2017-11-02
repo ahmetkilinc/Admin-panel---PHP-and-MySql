@@ -44,7 +44,7 @@ if($tamam == 1){
 	$mail->Mailer = "smtp";
 	$mail->Host = "ssl://smtp.gmail.com";
 	$mail->Port = 465;
-	$mail->SMTPAuth = true; // SMTP auth
+	$mail->SMTPAuth = true; 
 	$mail->Username = "ahmetkilinc3899@gmail.com"; //SMTP username
 	$mail->Password = "ahmetahmet3899"; //SMTP password
 
