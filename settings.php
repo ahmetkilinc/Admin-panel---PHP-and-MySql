@@ -1,16 +1,15 @@
-<?php
-	session_start();
+<?php 
 
-	//echo $_SESSION["adminkullanici"];
+session_start();
 
-	$url = 'http://localhost/tutorialsPoint/adminPanel/index.php';
+$url = 'http://localhost/tutorialsPoint/adminPanel/main_page.php';
 
-	if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
+if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 	
 		header("Location: $url");
-	}
-
+}
 ?>
+
 
 <html>
 	<header>
@@ -36,6 +35,16 @@
 			
 			button.buttonGonder {
 
+				background-color: #4CAD60;
+				color: white;
+				padding: 14px 20px;
+				margin: 8px 0;
+				border: none;
+				width: 100%;
+			}
+			
+			button.buttonDegistir {
+				
 				background-color: #4CAD60;
 				color: white;
 				padding: 14px 20px;
@@ -72,7 +81,7 @@
 			}
 			h2{
 				
-				margin-left: 42%;
+				margin-left: 38%;
 			}
 				
 		</style>
@@ -87,57 +96,36 @@
 					<img style="width:100%; heigth:100%;" src="images/adminavatar.png">
 				</div>
 			</div>
-				<button style="width: 100%; text-align:center; border-radius:50px;" onclick="funcAyarlar()" class="buttonD" type="button">Ayarlar</button>
+				<button style="width: 100%; text-align:center; border-radius:50px;" class="buttonD" type="button" onclick="funcDropdown()">Ayarlar</button>
 				<button style="width: 100%; border-radius:50px;" class="button" type="button" onclick="func()">Çıkış</button>
 		</div>
 		
-<div style="overflow:auto;" class='maincontent'>
-	
-	<h2>Admin Paneli</h2>
-	
-	<form method="post" action="changevariables.php">	
-		<table>
-		  <tr>
-			<th>Değişkenler:</th>
-		  </tr>
-		  <tr>
-			<td>Demir Fiyatı:</td>
-			<td><input type="number" step="0.001" name="demirFiyati" value=""></td>
-		  </tr>
-		  <tr>
-			<td>Değişken 2:</td>
-			<td><input type="number" step="0.001" name="degisken2" value=""></td>
-		  </tr>
-		  <tr>
-			<td>Değişken 3:</td>
-			<td><input type="number" step="0.001" name="degisken3" value=""></td>
-		  </tr>
-		  <tr>
-			<td>Değişken 4:</td>
-			<td><input type="number" step="0.001" name="degisken4" value=""></td>
-		  </tr>
-		  <tr>
-			<td>Değişken 5:</td>
-			<td><input type="number" step="0.001" name="degisken5" value=""></td>
-		  </tr>
-		  <tr>
-			<td>Değişken 6:</td>
-			<td><input type="number" step="0.001" name="degisken6" value=""></td>
-		  </tr>
-		</table>	
+		<div style="overflow:auto;" class='maincontent'>
 
-		<button class="buttonGonder" type="submit">Gönder</button>
-	</form>
-</div>	
+			<h2>Admin Paneli Ayarlar</h2>
+				<table>
+				  <tr>
+					<td>Kullanıcı Adını Değiştir</td>
+					<td><input type="text" name="yeniKulAdi" value=""></td>
+					<td><button class="buttonDegistir" onclick="funcKulAdiDegistir">Onayla</button></td>
+				  </tr>
+				  <tr>
+					<td>Şifre Değiştir</td>
+					<td><input type="text" name="yeniSifre" value=""></td>
+					<td><button class="buttonDegistir" onclick="funcSifreDegistir">Onayla</button></td>
+				  </tr>
+				</table>	
+				<button class="buttonGonder" onclick="funcGeri()" >Ana Sayfaya Dön</button>
+		</div>	
 	</body>
 	<head>
 		<script>
 			
-			function funcAyarlar(){
+			function funcGeri(){
 				
-				window.location.replace('http://localhost/tutorialsPoint/adminPanel/settings.php');
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/main_page.php');
 			}
-			
+
 			function func(){
 
 				window.location.replace('http://localhost/tutorialsPoint/adminPanel/cikis.php');

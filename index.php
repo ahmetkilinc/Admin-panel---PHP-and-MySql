@@ -130,10 +130,19 @@ img.logo{
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Vazgeç</button>
+    <button type="button" onclick="funcVazgec()" class="cancelbtn">Vazgeç</button>
     <span class="psw"><a href="lostpassword.php">Şifremi Unuttum</a></span>
   </div>
 </form>
+	
+	<script>
+	
+		function funcVazgec(){
+			
+			//ana sayfaya yolla kullanıcıyı.
+			//window.location.replace('');
+		}
+	</script>
 
 </body>
 </html>

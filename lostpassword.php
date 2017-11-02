@@ -102,7 +102,7 @@ img.logo {
 <body>
 
 <img src="images/logo.png" alt="Logo" class="logo">
-	<h2>Kullanıcı adınızı veya şifrenizi unuttuysanız, yönetici olarak kaydedilmiş e-posta adresinizi yazarak kullanıcı adı ve şifrenizi alabilirsiniz.
+	<h2>Kullanıcı adınızı veya şifrenizi unuttuysanız, yönetici olarak kaydedilmiş e-posta adresinizi yazarak kullanıcı adı ve şifrenizi mail yolu ile alabilirsiniz.
 </h2>
 <form action="lpserverside.php" method="post">
 
