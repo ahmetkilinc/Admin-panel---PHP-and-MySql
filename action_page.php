@@ -27,9 +27,9 @@
 	$sql = "SELECT kullanici_adi, sifre FROM admin_user";
 	$result = $conn->query($sql);
 	
-	if ($result->num_rows > 0) {
-    // output data of each row
-		while($row = $result->fetch_assoc()) {
+	if ($result->num_rows > 0){
+    	//output data of each row
+		while($row = $result->fetch_assoc()){
 			
 			if($adminname == $row["kullanici_adi"]){
 				
