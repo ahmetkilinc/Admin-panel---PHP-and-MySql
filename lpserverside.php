@@ -5,7 +5,7 @@ require_once("class.phpmailer.php");
 $eposta = $_POST["eposta"];
 $tamam = 0;
 
-$conn = new mysqli("localhost", "root", "ahmet3899", "webapp");
+$conn = new mysqli("localhost", "root", "", "webapp");
 
 if($conn->connect_error){
 	
@@ -45,8 +45,8 @@ if($tamam == 1){
 	$mail->Host = "ssl://smtp.gmail.com";
 	$mail->Port = 465;
 	$mail->SMTPAuth = true; 
-	$mail->Username = "ahmetkilinc3899@gmail.com"; //SMTP username
-	$mail->Password = "ahmetahmet3899"; //SMTP password
+	$mail->Username = ""; //SMTP username
+	$mail->Password = ""; //SMTP password
 
 	$mail->setFrom('betonel@betonel.com.tr', 'Betonel A.Ş.');
 	$mail->AddAddress($eposta);
