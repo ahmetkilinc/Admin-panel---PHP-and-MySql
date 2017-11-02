@@ -5,7 +5,7 @@ require_once("class.phpmailer.php");
 $eposta = $_POST["eposta"];
 $tamam = 0;
 
-$conn = new mysqli("localhost", "root", "ahmet3899", "webapp");
+$conn = new mysqli("localhost", "root", "", "webapp");
 
 if($conn->connect_error){
 	
