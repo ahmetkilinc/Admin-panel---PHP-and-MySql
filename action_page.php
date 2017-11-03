@@ -4,7 +4,6 @@
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
 	$dbname = "webapp";
 
 	$url1 = 'http://localhost/tutorialsPoint/adminPanel/index.php';
@@ -59,7 +58,7 @@
 	}
 
 ?>
-
+<!doctype html>
 	<html>
 	<head>
 		<style>

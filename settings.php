@@ -10,11 +10,10 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 }
 ?>
 
-
+<!doctype html>
 <html>
 	<header>
 		<style>
-			
 			.maincontent{
 	
 			  width: 960px;
@@ -26,14 +25,14 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 			  cursor: pointer;
 			}
 			
-			button.button {
+			button.button{
 
 				background-color: #4CAD60;
 				color: white;
 				border: none;
 			}
 			
-			button.buttonGonder {
+			button.buttonGonder{
 
 				background-color: #4CAD60;
 				color: white;
@@ -43,7 +42,7 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 				width: 100%;
 			}
 			
-			button.buttonDegistir {
+			button.buttonDegistir{
 				
 				background-color: #4CAD60;
 				color: white;
@@ -53,19 +52,19 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 				width: 100%;
 			}
 			
-			td, th {
+			td, th{
 				
 				border: 1px solid #dddddd;
 				text-align: left;
 				padding: 8px;
 			}
 
-			tr:nth-child(even) {
+			tr:nth-child(even){
 				
 				background-color: #dddddd;
 			}
 			
-			table {
+			table{
 				
 				font-family: arial, sans-serif;
 				border: 1%;
@@ -79,9 +78,16 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 				width: 5%;
 				height: 5%;
 			}
+			
 			h2{
 				
 				margin-left: 38%;
+			}
+			
+			.imgSettings{
+				
+				width: 20px !important;
+				height: 20px !important;
 			}
 				
 		</style>
@@ -105,21 +111,46 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 			<h2>Admin Paneli Ayarlar</h2>
 				<table>
 				  <tr>
-					<td>Kullanıcı Adını Değiştir</td>
-					<td><input type="text" name="yeniKulAdi" value=""></td>
-					<td><button class="buttonDegistir" onclick="funcKulAdiDegistir">Onayla</button></td>
+					<td><img class="imgSettings" style="width:100%; heigth:100%;" src="images/settings.png">&nbsp;&nbsp;Kullanıcı Adını Değiştir</td>
+					<td><button class="buttonDegistir" onclick="funcKulAdiDegistir()">Onayla</button></td>
 				  </tr>
 				  <tr>
-					<td>Şifre Değiştir</td>
-					<td><input type="text" name="yeniSifre" value=""></td>
-					<td><button class="buttonDegistir" onclick="funcSifreDegistir">Onayla</button></td>
+					<td><img class="imgSettings" style="width:100%; heigth:100%;" src="images/settings.png">&nbsp;&nbsp;Şifre Değiştir</td>
+					<td><button class="buttonDegistir" onclick="funcSifreDegistir()">Onayla</button></td>
+				  </tr>
+				  <tr>
+					<td><img class="imgSettings" style="width:100%; heigth:100%;" src="images/settings.png">&nbsp;&nbsp;Yeni Yönetici Ekle</td>
+					<td><button class="buttonDegistir" onclick="funcAdminEkle()">Onayla</button></td>
+				  </tr>
+				  <tr>
+					<td><img class="imgSettings" style="width:100%; heigth:100%;" src="images/settings.png">&nbsp;&nbsp;Yöneticileri Düzenle</td>
+					<td><button class="buttonDegistir" onclick="funcAdminDuzenle()">Onayla</button></td>
 				  </tr>
 				</table>	
 				<button class="buttonGonder" onclick="funcGeri()" >Ana Sayfaya Dön</button>
 		</div>	
 	</body>
 	<head>
-		<script>
+		<script>		
+			function funcAdminDuzenle(){
+				
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/')
+			}
+			
+			function funcAdminEkle(){
+				
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/addNewAdmin.php');
+			}
+			
+			function funcSifreDegistir(){
+				
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/passwordChange.php');
+			}
+			
+			function funcKulAdiDegistir(){
+				
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/userNameChange.php');
+			}
 			
 			function funcGeri(){
 				

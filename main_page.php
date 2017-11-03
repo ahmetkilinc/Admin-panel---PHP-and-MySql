@@ -11,7 +11,7 @@
 	}
 
 ?>
-
+<!doctype html>
 <html>
 	<header>
 		<style>
@@ -27,14 +27,14 @@
 			  cursor: pointer;
 			}
 			
-			button.button {
+			button.button{
 
 				background-color: #4CAD60;
 				color: white;
 				border: none;
 			}
 			
-			button.buttonGonder {
+			button.buttonGonder{
 
 				background-color: #4CAD60;
 				color: white;
@@ -44,19 +44,19 @@
 				width: 100%;
 			}
 			
-			td, th {
+			td, th{
 				
 				border: 1px solid #dddddd;
 				text-align: left;
 				padding: 8px;
 			}
 
-			tr:nth-child(even) {
+			tr:nth-child(even){
 				
 				background-color: #dddddd;
 			}
 			
-			table {
+			table{
 				
 				font-family: arial, sans-serif;
 				border: 1%;

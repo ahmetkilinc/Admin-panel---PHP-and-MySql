@@ -112,7 +112,7 @@ img.logo{
 <body>
 
 <img src="images/logo.png" alt="Logo" class="logo">
-	<h2>Admin Giriş Paneli
+	<h2>Admin Paneli Girişi
 </h2>
 <form action="action_page.php" method="post">
   <div class="imgcontainer">

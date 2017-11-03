@@ -25,11 +25,8 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 	header("Location: $url");
 }
 
-
-
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
 	$dbname = "webapp";
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -57,11 +54,22 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 
 		//echo "Variables Updated";
 	}
-
 	else{
 
 		//echo "Error!: " . $conn->error;
 	}
+
+	$sql2 = "UPDATE degiskenler SET d_degeri = $degisken3 WHERE d_ismi = 'Cimento'";
+
+	if($conn->query($sql2) === TRUE){
+		
+		echo 'ok!';
+	}
+	else{
+		
+		echo "Error!: " . $conn->error;
+	}
+	
 
 	/*echo $demirFiyati;
 	echo $degisken2;
@@ -70,7 +78,7 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 	echo $degisken5;
 	echo $degisken6;*/
 ?>
-
+<!doctype html>
 <html>
 	<head>
 		<style>
@@ -119,14 +127,14 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 				margin-top: 10%;
 			}
 			
-			button.button {
+			button.button{
 
 				background-color: #4CAD60;
 				color: white;
 				border: none;
 			}
 			
-			button.buttonGonder {
+			button.buttonGonder{
 
 				background-color: #4CAD60;
 				color: white;
@@ -163,7 +171,15 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 			<table>
 			  <tr>
 				<td>Demir Fiyatının Güncellenmiş Değeri:</td>
-				<td><?php echo $demirFiyati ?></td>
+				<td><?php if(empty($demirFiyati)){
+
+							echo "Bu değişken üzerinde değişiklik yapılmadı.";
+						  }
+						  else{
+
+							  echo $demirFiyati . "TL";
+						  }
+					?></td>
 			  </tr>
 			  <tr>
 				<td>Değişken 2 nin Güncellenmiş Değeri:</td>
@@ -173,14 +189,22 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 						} 
 						  else{
 
-							  echo $degisken2;
+							  echo $degisken2 . "TL";
 						  }
 					?>
 				</td>
 			  </tr>
 			  <tr>
 				<td>Değişken 3 nin Güncellenmiş Değeri:</td>
-				<td></td>
+				<td><?php if(empty($degisken3)){
+
+							echo "Bu değişken üzerinde değişiklik yapılmadı.";
+						} 
+						  else{
+
+							  echo $degisken3 . "TL";
+						  }
+					?></td>
 			  </tr>
 			  <tr>
 				<td>Değişken 4 nin Güncellenmiş Değeri:</td>
