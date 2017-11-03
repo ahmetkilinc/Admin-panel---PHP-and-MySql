@@ -7,7 +7,7 @@
 
 	//echo 'Başarı ile çıkış yaptınız.';
 ?>
-
+<!doctype html>
 <html>
 	<head>
 		<style>
@@ -36,7 +36,7 @@
 				overflow: hidden;
 			}
 						
-			button {
+			button{
 
 				background-color: #4CAF50;
 				color: white;

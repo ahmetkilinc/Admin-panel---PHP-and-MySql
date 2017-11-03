@@ -5,7 +5,6 @@ require_once("class.phpmailer.php");
 $eposta = $_POST["eposta"];
 $tamam = 0;
 
-$conn = new mysqli("localhost", "root", "", "webapp");
 
 if($conn->connect_error){
 	
@@ -45,14 +44,10 @@ if($tamam == 1){
 	$mail->Host = "ssl://smtp.gmail.com";
 	$mail->Port = 465;
 	$mail->SMTPAuth = true; 
-	$mail->Username = "@gmail.com"; //SMTP username
-	$mail->Password = ""; //SMTP password
 
-	$mail->setFrom('@.com.tr', 'Betonel A.Ş.');
 	$mail->AddAddress($eposta);
-	$mail->addReplyTo("@.com.tr", "Betonel A.Ş.");
 
-	$mail->Subject = "Betonel E-Posta Dogrulama Maili";
+	$mail->Subject = "Betonel Yönetici Kullanıcı Adı ve Şifre Hatırlatıcı";
 	$mail->AddEmbeddedImage('presets/mail-footer.png', 'mail-footer');
 	$mail->AltBody = "kullanıcı adınız: " . $kullanici_adi ." şifreniz: " . $kullanici_sifre;
 
@@ -68,11 +63,11 @@ if($tamam == 1){
 				</style>
 			</head>
 				<body>
-					<div class=\"container\">
-						<br> <h4> Merhaba kullanıcı adınız: $kullanici_adi, şifreniz: $kullanici_sifre</a></h4> <br> <br> <br> <br>
+					<div class='container'>
+						<br> <h4> Merhaba;<br><br> kullanıcı adınız: $kullanici_adi <br> şifreniz: $kullanici_sifre</a></h4> <br> <br> <br> <br>
 					</div>
 					<footer>
-						<img src=\"cid:mail-footer\" alt=\"Betonel A.Ş.\" style=\"width:1326px;height:195;\">
+						<img src='http://localhost/adminPanel/images/mail-footer' alt='Betonel A.Ş.' style='width:1326px;height:195;'>
 					</footer>
 				</body>";
 
@@ -81,17 +76,205 @@ if($tamam == 1){
 
 	if(!$mail->Send()){
 
-		echo "mail gitmedi.";
+		echo "<html>
+				<head>
+					<style>
+						.buttonimg{
+
+							margin-left: 90%;
+							width: 5%;
+							height: 5%;
+						}
+
+						.maincontent{
+
+						  width: 70%;
+						  background: white;
+						  margin: 10% auto 15px auto;
+						  border-radius: 10px 10px 10px 10px;
+						  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+						}
+
+						article{
+
+							height: 70%;
+							margin-left: 170px;
+							border-left: 0px solid gray;
+							padding: 1em;
+							overflow: hidden;
+						}
+
+						button{
+
+							background-color: #4CAF50;
+							color: white;
+							padding: 14px 20px;
+							margin: 8px 0;
+							border: none;
+							cursor: pointer;
+							width: 100%;
+						}
+
+						h2{
+
+							margin-left: 42%;
+						}
+					</style>
+				</head>
+				<body>
+
+					<div class='maincontent'>
+
+						<h2>Bilgileri Unuttum</h2>
+
+						<p>E-Postanız gönderilemedi. Daha fazla bilgi almak için yazılımcınıza ulaşınız.</p>
+
+						<button onclick='func()' type='button'>Giriş Sayfasına Dön</button>
+					</div>
+				</body>
+				<script>
+					function func(){
+
+						window.location.replace('http://localhost/tutorialsPoint/adminPanel/index.php');
+					}
+				</script>
+			</html>";
 	}
 	else{
 
-		echo "mail yollandı.";
+		echo "
+		<!doctype html>
+		<html>
+				<head>
+					<style>
+						.buttonimg{
+
+							margin-left: 90%;
+							width: 5%;
+							height: 5%;
+						}
+
+						.maincontent{
+
+						  width: 70%;
+						  background: white;
+						  margin: 10% auto 15px auto;
+						  border-radius: 10px 10px 10px 10px;
+						  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+						}
+
+						article{
+
+							height: 70%;
+							margin-left: 170px;
+							border-left: 0px solid gray;
+							padding: 1em;
+							overflow: hidden;
+						}
+
+						button{
+
+							background-color: #4CAF50;
+							color: white;
+							padding: 14px 20px;
+							margin: 8px 0;
+							border: none;
+							cursor: pointer;
+							width: 100%;
+						}
+
+						h2{
+
+							margin-left: 42%;
+						}
+					</style>
+				</head>
+				<body>
+
+					<div class='maincontent'>
+
+						<h2>Bilgileri Unuttum</h2>
+
+						<p>E-Postanız mail adresinize başarı ile yollandı. Lütfen kontrol ediniz.</p>
+
+						<button onclick='func()' type='button'>Giriş Sayfasına Dön</button>
+					</div>
+				</body>
+				<script>
+					function func(){
+
+						window.location.replace('http://localhost/tutorialsPoint/adminPanel/index.php');
+					}
+				</script>
+			</html>";
+		}
 	}
-}
-else{
+	else{
 	
-	echo "eposta adresiniz sistemde kayıtlı değil.";
-}
+		echo "<html>
+				<head>
+					<style>
+						.buttonimg{
+
+							margin-left: 90%;
+							width: 5%;
+							height: 5%;
+						}
+
+						.maincontent{
+
+						  width: 70%;
+						  background: white;
+						  margin: 10% auto 15px auto;
+						  border-radius: 10px 10px 10px 10px;
+						  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+						}
+
+						article{
+
+							height: 70%;
+							margin-left: 170px;
+							border-left: 0px solid gray;
+							padding: 1em;
+							overflow: hidden;
+						}
+
+						button{
+
+							background-color: #4CAF50;
+							color: white;
+							padding: 14px 20px;
+							margin: 8px 0;
+							border: none;
+							cursor: pointer;
+							width: 100%;
+						}
+
+						h2{
+
+							margin-left: 42%;
+						}
+					</style>
+				</head>
+				<body>
+
+					<div class='maincontent'>
+
+						<h2>Bilgileri Unuttum</h2>
+
+						<p>Mail adresiniz sistemde kayıtlı değildir. Bir yanlışlık olduğunu düşünüyorsanız, yazılımcınıza ulaşınız.</p>
+
+						<button onclick='func()' type='button'>Giriş Sayfasına Dön</button>
+					</div>
+				</body>
+				<script>
+					function func(){
+
+						window.location.replace('http://localhost/tutorialsPoint/adminPanel/index.php');
+					}
+				</script>
+			</html>";
+	}
 
 $conn->close();
 
