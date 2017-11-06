@@ -111,10 +111,6 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 			<h2>Admin Paneli Ayarlar</h2>
 				<table>
 				  <tr>
-					<td><img class="imgSettings" style="width:100%; heigth:100%;" src="images/settings.png">&nbsp;&nbsp;Kullanıcı Adını Değiştir</td>
-					<td><button class="buttonDegistir" onclick="funcKulAdiDegistir()">Onayla</button></td>
-				  </tr>
-				  <tr>
 					<td><img class="imgSettings" style="width:100%; heigth:100%;" src="images/settings.png">&nbsp;&nbsp;Şifre Değiştir</td>
 					<td><button class="buttonDegistir" onclick="funcSifreDegistir()">Onayla</button></td>
 				  </tr>
@@ -128,13 +124,13 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 				  </tr>
 				</table>	
 				<button class="buttonGonder" onclick="funcGeri()" >Ana Sayfaya Dön</button>
-		</div>	
+		</div>
 	</body>
 	<head>
-		<script>		
+		<script>
 			function funcAdminDuzenle(){
 				
-				window.location.replace('http://localhost/tutorialsPoint/adminPanel/')
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/editAdmin.php');
 			}
 			
 			function funcAdminEkle(){
@@ -145,11 +141,6 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 			function funcSifreDegistir(){
 				
 				window.location.replace('http://localhost/tutorialsPoint/adminPanel/passwordChange.php');
-			}
-			
-			function funcKulAdiDegistir(){
-				
-				window.location.replace('http://localhost/tutorialsPoint/adminPanel/userNameChange.php');
 			}
 			
 			function funcGeri(){
