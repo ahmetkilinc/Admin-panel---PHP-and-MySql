@@ -56,9 +56,9 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 	}
 	else{
 
-		//echo "Error!: " . $conn->error;
+		echo "Error!: " . $conn->error;
 	}
-
+/*
 	$sql2 = "UPDATE degiskenler SET d_degeri = $degisken3 WHERE d_ismi = 'Cimento'";
 
 	if($conn->query($sql2) === TRUE){
@@ -68,7 +68,7 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 	else{
 		
 		echo "Error!: " . $conn->error;
-	}
+	}*/
 	
 
 	/*echo $demirFiyati;
@@ -177,7 +177,7 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 						  }
 						  else{
 
-							  echo $demirFiyati . "TL";
+							  echo $demirFiyati . " TL";
 						  }
 					?></td>
 			  </tr>
@@ -189,7 +189,7 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 						} 
 						  else{
 
-							  echo $degisken2 . "TL";
+							  echo $degisken2 . " TL";
 						  }
 					?>
 				</td>
@@ -202,7 +202,7 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 						} 
 						  else{
 
-							  echo $degisken3 . "TL";
+							  echo $degisken3 . " TL";
 						  }
 					?></td>
 			  </tr>
