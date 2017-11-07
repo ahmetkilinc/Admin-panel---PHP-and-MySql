@@ -5,8 +5,11 @@ Developed with Php and MySql.
 
 
 +Admin Log in page with php session.
+
 +Forgot Password page, sending password with email.
+
 +main page for changing values on database.
+
 +settings page for editing Admins, changing password, deleting admins and adding new admins.
 
 
