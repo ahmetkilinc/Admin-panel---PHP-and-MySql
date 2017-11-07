@@ -1,0 +1,9 @@
+diff a/EditAdmin.php b/EditAdmin.php	(rejected hunks)
+@@ -0,6 +0,7 @@
+ 
+ $servername = "localhost";
+ $username = "root";
++$password = "ahmet3899";
+ $dbname = "webapp";
+ 
+ $conn = new mysqli($servername, $username, $password, $dbname);

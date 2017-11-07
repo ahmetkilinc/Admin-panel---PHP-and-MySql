@@ -1,3 +1,14 @@
+<?php  
+session_start();
+
+$url = 'http://localhost/tutorialsPoint/adminPanel/main_page.php';
+
+if(isset($_SESSION['adminkullanici']) && !empty($_SESSION['adminkullanici'])){
+	
+	header("Location: $url");
+}
+?>
+
 <!doctype html>
 <html>
 <head>
