@@ -131,7 +131,7 @@ if ($conn->query($sql) === TRUE) {
 			
 			<table>
 			  <tr>
-				<td>Yeni Admin Kullanıcı Adi:</td>
+				<td>Yeni Admin Kullanıcı Adı:</td>
 				<td><?php echo $yeniAdminAdi;
 					?></td>
 			  </tr>

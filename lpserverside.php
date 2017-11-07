@@ -45,6 +45,7 @@ if($tamam == 1){
 	$mail->Port = 465;
 	$mail->SMTPAuth = true; 
 
+	$mail->setFrom('betonel@betonel.com.tr', 'Betonel A.Ş.');
 	$mail->AddAddress($eposta);
 
 	$mail->Subject = "Betonel Yönetici Kullanıcı Adı ve Şifre Hatırlatıcı";
@@ -65,6 +66,7 @@ if($tamam == 1){
 				<body>
 					<div class='container'>
 						<br> <h4> Merhaba;<br><br> kullanıcı adınız: $kullanici_adi <br> şifreniz: $kullanici_sifre</a></h4> <br> <br> <br> <br>
+						<p><a href=''/html/></a></p>
 					</div>
 					<footer>
 						<img src='http://localhost/adminPanel/images/mail-footer' alt='Betonel A.Ş.' style='width:1326px;height:195;'>
