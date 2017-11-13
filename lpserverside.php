@@ -47,6 +47,7 @@ if($tamam == 1){
 
 	$mail->setFrom('betonel@betonel.com.tr', 'Betonel A.Ş.');
 	$mail->AddAddress($eposta);
+	$mail->addReplyTo("betonel@betonel.com.tr", "Betonel A.Ş.");
 
 	$mail->Subject = "Betonel Yönetici Kullanıcı Adı ve Şifre Hatırlatıcı";
 	$mail->AddEmbeddedImage('presets/mail-footer.png', 'mail-footer');
@@ -65,11 +66,11 @@ if($tamam == 1){
 			</head>
 				<body>
 					<div class='container'>
-						<br> <h4> Merhaba;<br><br> kullanıcı adınız: $kullanici_adi <br> şifreniz: $kullanici_sifre</a></h4> <br> <br> <br> <br>
-						<p><a href=''/html/></a></p>
+						<br> <h4> Merhaba;<br><br> Kullanıcı Adınız: $kullanici_adi <br> Şifreniz: $kullanici_sifre</a></h4> <br> <br> <br> <br>
+						<p><a href='http://localhost/tutorialsPoint/index.php'/html/>Betonel Admin Paneli</a></p>
 					</div>
 					<footer>
-						<img src='http://localhost/adminPanel/images/mail-footer' alt='Betonel A.Ş.' style='width:1326px;height:195;'>
+						<img src='http://localhost/adminPanel/images/mail-footer.php' alt='Betonel A.Ş.' style='width:1326px;height:195;'>
 					</footer>
 				</body>";
 

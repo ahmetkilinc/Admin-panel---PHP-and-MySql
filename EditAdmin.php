@@ -329,3 +329,8 @@ $adet = count($kullaniciAdlar);
 		</script>
 	</head>
 </html>
+
+<?php 
+
+$conn->close();
+?>

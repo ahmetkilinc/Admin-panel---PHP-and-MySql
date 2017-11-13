@@ -12,11 +12,14 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 //database'de değişkenleri değiştir.
 
 $demirFiyati = $_POST["demirFiyati"];
-$degisken2 = $_POST["degisken2"];
-$degisken3 = $_POST["degisken3"];
-$degisken4 = $_POST["degisken4"];
-$degisken5 = $_POST["degisken5"];
-$degisken6 = $_POST["degisken6"];
+$betonFiyati = $_POST["betonFiyati"];
+$betonIscilik = $_POST["betonIscilik"];
+$demirIscilik = $_POST["demirIscilik"];
+$nakliyatFiyati = $_POST["nakliyatFiyati"];
+$montajIscilikFiyati = $_POST["montajIscilikFiyati"];
+$buharKurFiyati = $_POST["buharKuruFiyati"];
+$ankrajFiyati = $_POST["ankrajFiyati"];
+
 
 if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degisken4) && empty($degisken5) && empty($degisken6)){
 	
@@ -36,58 +39,99 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 		die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "UPDATE degiskenler SET d_degeri = $demirFiyati WHERE d_ismi = 'Demir'";
+	$sqlDemirFiyati = "UPDATE degiskenler SET d_degeri = '$demirFiyati' WHERE d_ismi = 'Demir'";
 
-	if ($conn->query($sql) === TRUE){
-
-		//echo "Variables Updated";
-	}
-
-	else{
-
-		echo "Error!: " . $conn->error;
-	}
-
-	$sql1 = "UPDATE degiskenler SET d_degeri = $degisken2 WHERE d_ismi = 'Beton'";
-
-	if ($conn->query($sql1) === TRUE){
+	if ($conn->query($sqlDemirFiyati) === TRUE){
 
 		//echo "Variables Updated";
 	}
 	else{
 
-		echo "Error!: " . $conn->error;
+		//echo "Error!: " . $conn->error;
 	}
-/*
-	$sql2 = "UPDATE degiskenler SET d_degeri = $degisken3 WHERE d_ismi = 'Cimento'";
 
-	if($conn->query($sql2) === TRUE){
+	$sqlBetonFiyati = "UPDATE degiskenler SET d_degeri = '$betonFiyati' WHERE d_ismi = 'Beton'";
+
+	if ($conn->query($sqlBetonFiyati) === TRUE){
+
+		//echo "Variables Updated";
+	}
+	else{
+
+		//echo "Error!: " . $conn->error;
+	}
+
+	$sqlBetonIscilik = "UPDATE degiskenler SET d_degeri = '$betonIscilik' WHERE d_ismi = 'beton_iscilik'";
+
+	if ($conn->query($sqlBetonIscilik) === TRUE){
+
+		//echo "Variables Updated";
+	}
+	else{
+
+		//echo "Error!: " . $conn->error;
+	}
+
+	$sqlDemirIscilik = "UPDATE degiskenler SET d_degeri = '$demirIscilik' WHERE d_ismi = 'demir_iscilik'";
+
+	if($conn->query($sqlDemirIscilik) === TRUE){
 		
-		echo 'ok!';
+		//echo "demir işçilik fiyatı değişti";
 	}
 	else{
 		
-		echo "Error!: " . $conn->error;
-	}*/
-	
+		//echo "Hata:" . $conn->error;
+	}
 
-	/*echo $demirFiyati;
-	echo $degisken2;
-	echo $degisken3;
-	echo $degisken4;
-	echo $degisken5;
-	echo $degisken6;*/
+	$sqlNakliyatFiyati = "UPDATE degiskenler SET d_degeri = '$nakliyatFiyati' WHERE d_ismi = 'nakliyat'";
+
+	if($conn->query($sqlNakliyatFiyati) === TRUE){
+		
+		//echo "nakliyat fiyatı değişti";
+	}
+	else{
+		
+		//echo "hata:" . $conn->error;
+	}
+
+	$sqlMontajIscilikFiyati = "UPDATE degiskenler SET d_degeri = '$montajIscilikFiyati' WHERE d_ismi = 'montaj_iscilik'";
+
+	if($conn->query($sqlMontajIscilikFiyati) === TRUE){
+		
+		//echo "montaj işçilik fiyati değişti";
+	}
+	else{
+		
+		//echo "hata:" . $conn->error;
+	}
+
+	$sqlBuharKurFiyati = "UPDATE degiskenler SET d_degeri = '$buharKurFiyati' WHERE d_ismi = 'buhar_kuru'";
+
+	if($conn->query($sqlBuharKurFiyati) === TRUE){
+		
+		//echo "buhar kür fiyatı değişti";
+	}
+	else{
+		
+		//echo "hata:" . $conn->error;
+	}
+
+	$sqlAnkrajFiyati = "UPDATE degiskenler SET d_degeri = '$ankrajFiyati' WHERE d_ismi = 'ankraj'";
+
+	if($conn->query($sqlAnkrajFiyati) === TRUE){
+		
+		//echo "ankraj fiyati değişti";
+	}
+	else{
+		
+		//echo "hata:". $conn->error;
+	}
 ?>
+
 <!doctype html>
 <html>
-	<head>
+	<header>
 		<style>
-			.buttonimg{
-				
-				margin-left: 90%;
-				width: 5%;
-				height: 5%;
-			}
 			
 			.maincontent{
 	
@@ -96,15 +140,25 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 			  margin: 0 auto 15px auto;
 			  border-radius: 0 0 7px 7px;
 			  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+			  overflow: auto;
+			  cursor: pointer;
 			}
 			
-			article{
+			button.button{
 
-				height: 70%;
-				margin-left: 170px;
-				border-left: 0px solid gray;
-				padding: 1em;
-				overflow: hidden;
+				background-color: #4CAD60;
+				color: white;
+				border: none;
+			}
+			
+			button.buttonGonder{
+
+				background-color: #4CAD60;
+				color: white;
+				padding: 14px 20px;
+				margin: 8px 0;
+				border: none;
+				width: 100%;
 			}
 			
 			td, th{
@@ -126,30 +180,20 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 				width: 100%;
 				margin-top: 10%;
 			}
-			
-			button.button{
 
-				background-color: #4CAD60;
-				color: white;
-				border: none;
+			.buttonimg{
+				
+				margin-left: 90%;
+				width: 5%;
+				height: 5%;
 			}
-			
-			button.buttonGonder{
-
-				background-color: #4CAD60;
-				color: white;
-				padding: 14px 20px;
-				margin: 8px 0;
-				border: none;
-				width: 100%;
-			}
-			
 			h2{
 				
-				margin-left: 42%;
+				margin-left: 32%;
 			}
+				
 		</style>
-	</head>
+	</header>
 	<body>
 		<div class="buttonimg">
 			<div style="float:center;" class="kullanici">
@@ -160,87 +204,91 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 					<img style="width:100%; heigth:100%;" src="images/adminavatar.png">
 				</div>
 			</div>
-				<button style="width: 100%; text-align:center; border-radius:50px;" class="buttonD" type="button" onclick="funcAyarlar()">Ayarlar</button>
-				<button style="width: 100%; border-radius:50px;" class="button" type="button" onclick="funcCikis()">Çıkış</button>
+				<button style="width: 100%; text-align:center; border-radius:50px;" onclick="funcAyarlar()" class="buttonD" type="button">Ayarlar</button>
+				<button style="width: 100%; border-radius:50px;" class="button" type="button" onclick="func()">Çıkış</button>
 		</div>
 		
-		<div class="maincontent">
-			
-			<h2>Admin Paneli</h2>
-			
-			<table>
-			  <tr>
-				<td>Demir Fiyatının Güncellenmiş Değeri:</td>
-				<td><?php if(empty($demirFiyati)){
+<div style="overflow:auto;" class='maincontent'>
+	
+	<h2>Değişkenlere Yeni Değerleri Atandı!</h2>
+	
+	<form>	
+		<table>
+		  <tr>
+			<th>Değişkenler:</th>
+		  </tr>
+		  <tr>
+			<td>Demir Fiyatı:</td>
+			<td><?php echo $demirFiyati; ?> TL</td>
+		  </tr>
+		  <tr>
+			<td>Beton Fiyatı:</td>
+			<td><?php echo $betonFiyati; ?> TL</td>
+		  </tr>
+		  <tr>
+			<td>Beton İşçilik Fiyatı:</td>
+			<td><?php echo $betonIscilik; ?> TL</td>
+		  </tr>
+		  <tr>
+			<td>Demir İşçilik Fiyatı:</td>
+			<td><?php echo $demirIscilik; ?> TL</td>
+		  </tr>
+		  <tr>
+			<td>Nakliyat Fiyatı:</td>
+			<td><?php echo $nakliyatFiyati; ?> TL</td>
+		  </tr>
+		  <tr>
+			<td>Montaj İşçilik Fiyatı:</td>
+			<td><?php echo $montajIscilikFiyati; ?> TL</td>
+		  </tr>
+		  <tr>
+			<td>Buhar Kürü Fiyatı:</td>
+			<td><?php echo $buharKurFiyati; ?> TL</td>
+		  </tr>
+		  <tr>
+			<td>Ankraj Fiyatı:</td>
+			<td><?php echo $ankrajFiyati; ?> TL</td>
+		  </tr>
+		</table>
 
-							echo "Bu değişken üzerinde değişiklik yapılmadı.";
-						  }
-						  else{
-
-							  echo $demirFiyati . " TL";
-						  }
-					?></td>
-			  </tr>
-			  <tr>
-				<td>Değişken 2 nin Güncellenmiş Değeri:</td>
-				<td><?php if(empty($degisken2)){
-
-							echo "Bu değişken üzerinde değişiklik yapılmadı.";
-						} 
-						  else{
-
-							  echo $degisken2 . " TL";
-						  }
-					?>
-				</td>
-			  </tr>
-			  <tr>
-				<td>Değişken 3 nin Güncellenmiş Değeri:</td>
-				<td><?php if(empty($degisken3)){
-
-							echo "Bu değişken üzerinde değişiklik yapılmadı.";
-						} 
-						  else{
-
-							  echo $degisken3 . " TL";
-						  }
-					?></td>
-			  </tr>
-			  <tr>
-				<td>Değişken 4 nin Güncellenmiş Değeri:</td>
-				<td></td>
-			  </tr>
-			  <tr>
-				<td>Değişken 5 nin Güncellenmiş Değeri:</td>
-				<td></td>
-			  </tr>
-			  <tr>
-				<td>Değişken 6 nin Güncellenmiş Değeri:</td>
-				<td></td>
-			  </tr>
-			</table>
-			<button class="buttonGonder" onclick="func()" type="button">Başka Değişiklikler İçin Geri Dön</button>
-		</div>
+		<button class="buttonGonder" type="button" onclick="funcGeri()">Geri Dön</button>
+	</form>
+</div>	
 	</body>
-	<script>
-		
-		function funcCikis(){
+	<head>
+		<script>
 			
-			window.location.replace('http://localhost/tutorialsPoint/adminPanel/cikis.php');
-		}
-		
-		function funcAyarlar(){
+			function funcGeri(){
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/main_page.php');
+			}
 			
-			window.location.replace('http://localhost/tutorialsPoint/adminPanel/settings.php');
-		}
-		
-		function func(){
+			function funcAyarlar(){
+				
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/settings.php');
+			}
 			
-			window.history.back();
-		}
-	</script>
+			function func(){
+
+				window.location.replace('http://localhost/tutorialsPoint/adminPanel/cikis.php');
+			}
+		</script>
+	</head>
 </html>
 
-<?php 
+<?php
 	$conn->close();
+
+	//header("Location: $url");
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
