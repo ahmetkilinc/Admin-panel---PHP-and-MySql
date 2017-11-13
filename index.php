@@ -7,7 +7,6 @@ if(isset($_SESSION['adminkullanici']) && !empty($_SESSION['adminkullanici'])){
 	
 	header("Location: $url");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +14,12 @@ if(isset($_SESSION['adminkullanici']) && !empty($_SESSION['adminkullanici'])){
 <head>
  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-form {
+form{
 
     border: 3px solid #f1f1f1;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password]{
 
     width: 100%;
     padding: 12px 20px;
@@ -30,7 +29,7 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-button {
+button{
 
     background-color: #4CAF50;
     color: white;
@@ -41,19 +40,19 @@ button {
     width: 100%;
 }
 
-button:hover {
+button:hover{
 
     opacity: 0.8;
 }
 
-.cancelbtn {
+.cancelbtn{
 
     width: auto;
     padding: 10px 18px;
     background-color: #086A87;
 }
 
-.imgcontainer {
+.imgcontainer{
 
     text-align: center;
     margin-left: 40%;
@@ -62,13 +61,13 @@ button:hover {
 	height: 20%;
 }
 
-img.avatar {
+img.avatar{
 
     width: 40%;
     border-radius: 50%;
 }
 
-.container {
+.container{
 
 	width: 50%;
 	height: 50%;
@@ -76,19 +75,19 @@ img.avatar {
     padding: 16px;
 }
 
-span.psw {
+span.psw{
 
     float: right;
     padding-top: 16px;
 }
-	
+
 h2{
-		
+
 	text-align: center;	
 }
 
 img.logo{
-	
+
 	text-align: left;
 	width: 10%;
 	height: 5%;
@@ -97,12 +96,12 @@ img.logo{
 /* ekran büyüklük küçüklüğüne göre değişen style lar */
 @media screen and (max-width: 300px){
 
-    span.psw {
-	
+    span.psw{
+
        display: block;
        float: none;
     }
-    .cancelbtn {
+    .cancelbtn{
 	
        width: 100%;
     }
@@ -125,7 +124,7 @@ img.logo{
 
     <label><b>Parola</b></label>
     <input type="password" placeholder="Parolanızı Giriniz" name="kul_sif" required>
-        
+
     <button type="submit">Giriş Yap</button>
   </div>
 
@@ -134,15 +133,12 @@ img.logo{
     <span class="psw"><a href="lostpassword.php">Şifremi Unuttum</a></span>
   </div>
 </form>
-	
 	<script>
-	
 		function funcVazgec(){
 			
 			//ana sayfaya yolla kullanıcıyı.
 			//window.location.replace('');
 		}
 	</script>
-
 </body>
 </html>

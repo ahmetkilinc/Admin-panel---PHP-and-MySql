@@ -1,14 +1,43 @@
 <?php
-	session_start();
-
-	//echo $_SESSION["adminkullanici"];
-
-	$url = 'http://localhost/tutorialsPoint/adminPanel/index.php';
-
-	if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 	
-		header("Location: $url");
+session_start();
+
+//echo $_SESSION["adminkullanici"];
+
+$url = 'http://localhost/tutorialsPoint/adminPanel/index.php';
+
+if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
+	
+	header("Location: $url");
+}
+
+$servername = "localhost";
+$username = "root";
+$password = "ahmet3899";
+$dbname = "webapp";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if($conn->connect_error){
+	
+	die("Bağlantı sağlanamadı: " . $conn->connect_error);
+}
+
+$sql = "SELECT d_degeri FROM degiskenler";
+
+$result = $conn->query($sql);
+
+$i = 0;
+
+if($result->num_rows > 0){
+	
+	while($row = $result->fetch_assoc()){
+		
+		$degiskenDegerleri[$i] = $row["d_degeri"];
+		
+		$i = $i + 1;
 	}
+}
 
 ?>
 <!doctype html>
@@ -102,29 +131,38 @@
 		  </tr>
 		  <tr>
 			<td>Demir Fiyatı:</td>
-			<td><input type="number" step="0.001" name="demirFiyati" value=""></td>
+			<td><input type="number" step="0.001" min="0" name="demirFiyati" value="<?php echo $degiskenDegerleri[0]; ?>"></td>
+			<td><button class="buttonKardemir" type="submit" value="kardemir" name="kardemir">Kardemir Sitesinden Al</button></td>
 		  </tr>
 		  <tr>
-			<td>Değişken 2:</td>
-			<td><input type="number" step="0.001" name="degisken2" value=""></td>
+			<td>Beton Fiyatı:</td>
+			<td><input type="number" step="0.001" min="0" name="betonFiyati" value="<?php echo $degiskenDegerleri[1]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Değişken 3:</td>
-			<td><input type="number" step="0.001" name="degisken3" value=""></td>
+			<td>Beton İşçilik Fiyatı:</td>
+			<td><input type="number" step="0.001" min="0" name="betonIscilik" value="<?php echo $degiskenDegerleri[2]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Değişken 4:</td>
-			<td><input type="number" step="0.001" name="degisken4" value=""></td>
+			<td>Demir İşçilik Fiyatı:</td>
+			<td><input type="number" step="0.001" min="0" name="demirIscilik" value="<?php echo $degiskenDegerleri[3]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Değişken 5:</td>
-			<td><input type="number" step="0.001" name="degisken5" value=""></td>
+			<td>Nakliyat Fiyatı:</td>
+			<td><input type="number" step="0.001" min="0" name="nakliyatFiyati" value="<?php echo $degiskenDegerleri[4]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Değişken 6:</td>
-			<td><input type="number" step="0.001" name="degisken6" value=""></td>
+			<td>Montaj İşçilik Fiyatı:</td>
+			<td><input type="number" step="0.001" min="0" name="montajIscilikFiyati" value="<?php echo $degiskenDegerleri[5]; ?>"></td>
 		  </tr>
-		</table>	
+		  <tr>
+			<td>Buhar Kürü Fiyatı:</td>
+			<td><input type="number" step="0.001" min="0" name="buharKuruFiyati" value="<?php echo $degiskenDegerleri[6]; ?>"></td>
+		  </tr>
+		  <tr>
+			<td>Ankraj Fiyatı:</td>
+			<td><input type="number" step="0.001" min="0" name="ankrajFiyati" value="<?php echo $degiskenDegerleri[7]; ?>"></td>
+		  </tr>
+		</table>
 
 		<button class="buttonGonder" type="submit">Gönder</button>
 	</form>
