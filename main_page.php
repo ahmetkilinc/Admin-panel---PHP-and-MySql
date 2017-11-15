@@ -73,7 +73,14 @@ if($result->num_rows > 0){
 				width: 100%;
 			}
 			
-			td, th{
+			th, td{
+				
+				border: 1px solid #dddddd;
+				text-align: center;
+				padding: 8px;
+			}
+			
+			td.a{
 				
 				border: 1px solid #dddddd;
 				text-align: left;
@@ -128,38 +135,39 @@ if($result->num_rows > 0){
 		<table>
 		  <tr>
 			<th>Değişkenler:</th>
+			<th>Değerler:</th>
 		  </tr>
 		  <tr>
-			<td>Demir Fiyatı:</td>
+			<td class="a">Demir Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="demirFiyati" value="<?php echo $degiskenDegerleri[0]; ?>"></td>
 			<td><button class="buttonKardemir" type="submit" value="kardemir" name="kardemir">Kardemir Sitesinden Al</button></td>
 		  </tr>
 		  <tr>
-			<td>Beton Fiyatı:</td>
+			<td class="a">Beton Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="betonFiyati" value="<?php echo $degiskenDegerleri[1]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Beton İşçilik Fiyatı:</td>
+			<td class="a">Beton İşçilik Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="betonIscilik" value="<?php echo $degiskenDegerleri[2]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Demir İşçilik Fiyatı:</td>
+			<td class="a">Demir İşçilik Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="demirIscilik" value="<?php echo $degiskenDegerleri[3]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Nakliyat Fiyatı:</td>
+			<td class="a">Nakliyat Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="nakliyatFiyati" value="<?php echo $degiskenDegerleri[4]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Montaj İşçilik Fiyatı:</td>
+			<td class="a">Montaj İşçilik Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="montajIscilikFiyati" value="<?php echo $degiskenDegerleri[5]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Buhar Kürü Fiyatı:</td>
+			<td class="a">Buhar Kürü Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="buharKuruFiyati" value="<?php echo $degiskenDegerleri[6]; ?>"></td>
 		  </tr>
 		  <tr>
-			<td>Ankraj Fiyatı:</td>
+			<td class="a">Ankraj Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="ankrajFiyati" value="<?php echo $degiskenDegerleri[7]; ?>"></td>
 		  </tr>
 		</table>

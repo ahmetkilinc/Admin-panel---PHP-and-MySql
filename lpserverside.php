@@ -44,6 +44,7 @@ if($tamam == 1){
 	$mail->Host = "ssl://smtp.gmail.com";
 	$mail->Port = 465;
 	$mail->SMTPAuth = true; 
+	$mail->Username = "ahmetkilinc3899@gmail.com"; //SMTP username
 
 	$mail->setFrom('betonel@betonel.com.tr', 'Betonel A.Ş.');
 	$mail->AddAddress($eposta);

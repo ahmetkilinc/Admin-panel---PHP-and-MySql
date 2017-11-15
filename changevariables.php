@@ -38,8 +38,9 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 
 		die("Connection failed: " . $conn->connect_error);
 	}
+	$date = date("Y-m-d");
 
-	$sqlDemirFiyati = "UPDATE degiskenler SET d_degeri = '$demirFiyati' WHERE d_ismi = 'Demir'";
+	$sqlDemirFiyati = "UPDATE degiskenler SET d_degeri = '$demirFiyati', d_tarihi = '$date' WHERE d_ismi = 'Demir'";
 
 	if ($conn->query($sqlDemirFiyati) === TRUE){
 
@@ -126,6 +127,7 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 		
 		//echo "hata:". $conn->error;
 	}
+}
 ?>
 
 <!doctype html>
@@ -280,15 +282,3 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 
 	//header("Location: $url");
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
