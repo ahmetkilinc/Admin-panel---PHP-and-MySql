@@ -135,7 +135,7 @@ if($result->num_rows > 0){
 		<table>
 		  <tr>
 			<th>Değişkenler:</th>
-			<th>Değerler:</th>
+			<th>Birim Fiyatları:</th>
 		  </tr>
 		  <tr>
 			<td class="a">Demir Fiyatı:</td>
@@ -170,6 +170,11 @@ if($result->num_rows > 0){
 			<td class="a">Ankraj Fiyatı:</td>
 			<td><input type="number" step="0.001" min="0" name="ankrajFiyati" value="<?php echo $degiskenDegerleri[7]; ?>"></td>
 		  </tr>
+		  <tr>
+			<td class="a">Öngerme Halatı:</td>
+			<td><input type="number" step="0.001" min="0" name="ongermeHalati" value="<?php echo $degiskenDegerleri[8]; ?>"></td>
+		  </tr>
+			
 		</table>
 
 		<button class="buttonGonder" type="submit">Gönder</button>

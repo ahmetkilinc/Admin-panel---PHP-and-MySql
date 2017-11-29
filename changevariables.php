@@ -20,6 +20,71 @@ $montajIscilikFiyati = $_POST["montajIscilikFiyati"];
 $buharKurFiyati = $_POST["buharKuruFiyati"];
 $ankrajFiyati = $_POST["ankrajFiyati"];
 
+if(!empty($_POST["kardemir"])){
+	
+	$servername = "localhost";
+	$username = "root";
+	$dbname = "webapp";
+
+	$conn = new mysqli($servername, $username, $password, $dbname);
+
+	if ($conn->connect_error){
+
+		die("Connection failed: " . $conn->connect_error);
+	}
+	
+	$urlA = 'https://www.kardemir.com/Liste.aspx?yil=2017&s=FIYAT&Lng=tr-TR';
+	$content = file_get_contents($urlA);
+	$first_step = explode("satirMalzeme" , $content);
+	$second_step = explode("mm", $first_step[11]);
+	$fourth_step = explode("</td>", $second_step[1]);
+	$fifth_step = explode("class", $fourth_step[1]);
+	$sixth_step = explode("=\"satirFiyat\">", $fifth_step[1]);
+	
+	
+	
+	//$demirFiyat = explode(" ", $sixth_step[1]);
+	
+	$demirFiyat = implode(" ", $sixth_step);
+	
+	$demirFiyat = substr($demirFiyat, 0, -29);
+	
+	$demirFiyat = trim($demirFiyat);
+	
+	//$demirFiyat = substr($demirFiyat, 0, 0);
+	
+	//$demirFiyat = intval('$demirFiyat');
+
+	$urlB = 'https://www.kardemir.com/Liste.aspx?yil=2017&s=FIYAT&Lng=tr-TR';
+	$content1 = file_get_contents($urlB);
+	$first_step1 = explode("ContentPlaceHolder1_DynamicListe" , $content1);
+	$second_step1 = explode("div", $first_step1[1]);
+	$third_step1 = explode("=", $second_step1[1]);
+
+	$demirFiyatTarih = str_split($third_step1[1], 10);
+
+	echo $demirFiyatTarih[1];
+	
+	$sqlKardemir = "UPDATE degiskenler SET d_degeri = '$demirFiyat' WHERE d_ismi = 'Demir'";
+
+	if($conn->query($sqlKardemir) === TRUE){
+		
+		echo " Record updated successfully";
+	}
+	
+	else{
+		 
+		echo "Error updating record: " . $conn->error;
+	}
+	
+	$url1 = "http://localhost/tutorialsPoint/adminPanel/main_page.php";
+	
+	header("Location: $url1");
+
+	//$conn->close();
+}
+
+else{
 
 if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degisken4) && empty($degisken5) && empty($degisken6)){
 	
