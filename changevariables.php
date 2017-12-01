@@ -93,9 +93,6 @@ if(empty($demirFiyati) && empty($degisken2) && empty($degisken3) && empty($degis
 	header("Location: $url");
 }
 
-	$servername = "localhost";
-	$username = "root";
-	$dbname = "webapp";
 
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
