@@ -1,7 +1,7 @@
 # Admin-panel---PHP-and-MySql
 An Admin-Panel-Page for a Web Application. 
 
-Developed with Php and MySql.
+Developed with Php, MySql & Xampp.
 
 
 +Admin Log in page with php session.
@@ -14,3 +14,5 @@ Developed with Php and MySql.
 
 
 More information, use and implementation scenarios will be added in ahmetkilinc.net
+
+Note: if you want to use this tutorial in a remote server, than you should change all the database and server informations. If not; you must just edit the database infos and variable names in database and you are done.
