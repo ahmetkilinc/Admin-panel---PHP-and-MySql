@@ -11,6 +11,37 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 	header("Location: $url");
 }
 
+$firmaAdi = $_POST["detay"];
+
+$servername = "";
+$username = "";
+$password = "";
+$dbname = "";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if($conn->connect_error){
+	
+	die("Bağlantı sağlanamadı: " . $conn->connect_error);
+}
+
+$sql = "SELECT * FROM musteri";
+
+$result = $conn->query($sql);
+
+$i = 0;
+
+if($result->num_rows > 0){
+	
+	/*$a = $row["musteri_adi"];
+	$b = $row["musteri_firma"];*/
+	
+	while($row = $result->fetch_assoc()){
+		
+		echo "hop: " . $row["musteri_adi"];
+		echo "hop2 " . $row["musteri_firma"];
+	}
+}
 
 ?>
 <!doctype html>
@@ -44,7 +75,7 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 				padding: 14px 20px;
 				margin: 8px 0;
 				border: none;
-				width: 50%;
+				width: 100%;
 			}
 			
 			th, td{
@@ -83,7 +114,7 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 			
 			h2{
 				
-				margin-left: 42%;
+				text-align: center;
 			}
 			
 			.kullanici{
@@ -115,34 +146,48 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 <meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1.0'>
 </head>
 	
-	<h2>Admin Paneli</h2>
+	<h2>"<?php echo $firmaAdi;?>" Şirketine Verilen Teklif Bilgileri</h2>	
 		<table>
 		  <tr>
-			<td><button class="buttonGonder" onclick="degiskenAyarla()" >Değişkenleri Ayarla</button></td>
+			<td class="a">Müşteri Adı Soyadı:</td>
+			<td class="a"><?php echo $a;?></td>
+		  </tr>           
+		  <tr>
+			<td class="a">Firma Adı:</td>
+			<td class="a"><?php echo $b;?></td>
 		  </tr>
 		  <tr>
-			<td><button class="buttonGonder" onclick="teklifGor()" >Teklifleri Gör</button></td>
+			<td class="a">Müşteri Telefon No:</td>
+			<td class="a">Müşteri Adı</td>
 		  </tr>
 		  <tr>
-			<td><button class="buttonGonder" onclick="funcAyarlar()" >Kullanıcı Ayarları</button></td>
+			<td class="a">Müşteri E-Posta:</td>
+			<td class="a">Müşteri Adı</td>
 		  </tr>
 		  <tr>
-			<td><button class="buttonGonder" onclick="func()" >Çıkış Yap</button></td>
+			<td class="a">Teklif Fiyatı:</td>
+			<td class="a">Müşteri Adı</td>
+		  </tr>
+		  
+		  <tr>
+			<td class="a">Teklif Tarihi</td>
+			<td class="a">Müşteri Adı</td>
+		  </tr>
+		  
+		  <tr>
+			<td class="a">Onay</td>
+			<td class="a">Müşteri Adı</td>
 		  </tr>
 		</table>
+	<button class="buttonGonder" onclick="funcGeri()">Geri Dön</button>
 </div>	
 	</body>
 	<head>
 		<script>
 		
-			function teklifGor(){
+			function funcGeri(){
 				
 				window.location.replace('http://ahmetkilinc.net/adminPanel/teklifler.php');
-			}
-		
-			function degiskenAyarla(){
-				
-				window.location.replace('http://ahmetkilinc.net/adminPanel/degiskenayarlama.php');
 			}
 			
 			function funcAyarlar(){
