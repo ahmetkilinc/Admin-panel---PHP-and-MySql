@@ -23,11 +23,8 @@ if($conn->connect_error){
 	die("Bağlantı sağlanamadı: " . $conn->connect_error);
 }
 
-$dateControl = (new \DateTime((date("Y")-2)."-01-01"))->format("Y-m-d");
-$dateControl2 = (new \DateTime((date("Y")-2)."-12-31"))->format("Y-m-d");
-//echo $dateC . " hey there!";
-
-$sql = "SELECT musteri_adi, musteri_firma, musteri_tel, musteri_eposta, teklif_fiyat, teklif_tarih, teklif_onay FROM musteri WHERE teklif_tarih >= '$dateControl' AND teklif_tarih <= '$dateControl2' ORDER BY id DESC";
+//$sql = "SELECT musteri_firma FROM musteri";
+$sql = "SELECT id, musteri_adi, musteri_firma, musteri_tel, musteri_eposta, teklif_fiyat, teklif_tarih, teklif_onay FROM musteri WHERE teklif_onay = '0' ORDER BY id DESC";
 
 $result = $conn->query($sql);
 
@@ -37,6 +34,7 @@ if($result->num_rows > 0){
 	
 	while($row = $result->fetch_assoc()){
 		
+		$musteriIdler[$i] = $row["id"];
 		$musteriadlar[$i] = $row["musteri_adi"];
 		$musterifirmalar[$i] = $row["musteri_firma"];
 		$musteriteller[$i] = $row["musteri_tel"];
@@ -57,7 +55,7 @@ $teklifSayisi = $i;
 	<header>
 	<meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1.0'>
 		<style>
-			
+		
 			.maincontent{
 	
 			  width: 960px;
@@ -127,6 +125,11 @@ $teklifSayisi = $i;
 				height: 5%;
 			}
 			
+			.buttonDetay{
+				
+				background-color: CornflowerBlue;
+			}
+			
 			h2{
 				
 				text-align: center;
@@ -139,21 +142,6 @@ $teklifSayisi = $i;
 				margin-right: 0px;
 				text-align: center;
 			}
-			
-			.btnPast{
-				
-				background-color: CornflowerBlue;
-				width: 8%;
-				height: 7%;
-			}
-			.btnNow{
-				
-				background-color: CornflowerBlue;
-				width: 8%;
-				height: 7%;
-				float: right;
-			}
-				
 		</style>
 	</header>
 	<body>
@@ -174,11 +162,9 @@ $teklifSayisi = $i;
 <head>
 <meta charset='UTF-8' name='viewport' content='width=device-width, initial-scale=1.0'>
 </head>
-
-	<button class="btnPast"> <?php  ?></button>
-	<button class="btnNow" onclick="goNow()"><?php echo date("Y")-1; ?></button>
-	<h2>Tüm Teklifler <?php echo date("Y")-2;?></h2>
-	<form method="post" action="tekliflerdetaylibilgi.php">
+	
+	<h2>Henüz Onay Verilmemiş Teklifler</h2>
+	<form method="post" action="teklifOnaylama.php">
 		<table>
 		  <tr>
 			<th>Müşteri Ad-Soyadı:</th>
@@ -187,35 +173,36 @@ $teklifSayisi = $i;
 			<th>Müşteri E-Posta:</th>
 			<th>Teklif Fiyatı:</th>
 			<th>Teklif Tarihi:</th>
-			<th>Teklif Onayı</th>
+			<th>Teklif Onay</th>
 		  </tr>
-		  <?php for($j = 0; $j < $teklifSayisi; $j++){ ?>
+		<?php for($j = 0; $j < $teklifSayisi; $j++){?>
 		  <tr>
 			<td class="a"><?php echo $musteriadlar[$j]; ?></td>
-			<td class="b"><?php echo $musterifirmalar[$j]; ?></td>
+			<td class="a"><?php echo $musterifirmalar[$j]; ?></td>
 			<td class="a"><?php echo $musteriteller[$j]; ?></td>
 			<td class="b"><?php echo $musteriepostalar[$j]; ?></td>
 			<td class="a"><?php echo $tekliffiyatlar[$j]; ?></td>
 			<td class="b"><?php echo $tekliftarihler[$j]; ?></td>
-			<td class="a"><?php echo $teklifonaylar[$j]; ?></td>
+			<td><button class="buttonDetay" type="submit" value="<?php echo $musteriIdler[$j];?>" name="detay"><?php if($teklifonaylar[$j] == 0){ echo "Onayla!";} else{ echo "Onayı Kaldır"; } ?></button></td>
 		  </tr>
 		  <?php } ?>
 		</table>
 	</form>
+	<button class="buttonGonder" onclick="funcTumunuGor()">Tüm Teklifleri Gör</button>
 	<button class="buttonGonder" onclick="funcGeri()">Geri Dön</button>
 </div>	
 	</body>
 	<head>
 		<script>
 		
-			function goNow(){
+			function funcTumunuGor(){
 				
-				window.location.replace('http://ahmetkilinc.net/adminPanel/tumTekliflerPast1.php');
+				window.location.replace('http://ahmetkilinc.net/adminPanel/tumTeklifler.php');
 			}
 		
 			function funcGeri(){
 				
-				window.location.replace('http://ahmetkilinc.net/adminPanel/teklifler.php');
+				window.location.replace('http://ahmetkilinc.net/adminPanel/main_page.php');
 			}
 			
 			function funcAyarlar(){
