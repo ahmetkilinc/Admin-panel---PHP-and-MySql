@@ -83,7 +83,7 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 			
 			h2{
 				
-				margin-left: 42%;
+				text-align: center;
 			}
 			
 			.kullanici{
@@ -124,6 +124,9 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 			<td><button class="buttonGonder" onclick="teklifGor()" >Teklifleri Gör</button></td>
 		  </tr>
 		  <tr>
+			<td><button class="buttonGonder" onclick="onaysizteklifGor()" >Onaysız Teklifleri Gör</button></td>
+		  </tr>
+		  <tr>
 			<td><button class="buttonGonder" onclick="funcAyarlar()" >Kullanıcı Ayarları</button></td>
 		  </tr>
 		  <tr>
@@ -134,6 +137,11 @@ if(!isset($_SESSION['adminkullanici']) && empty($_SESSION['adminkullanici'])){
 	</body>
 	<head>
 		<script>
+		
+			function onaysizteklifGor(){
+				
+				window.location.replace('http://ahmetkilinc.net/adminPanel/onaysizteklifler.php');
+			}
 		
 			function teklifGor(){
 				
